@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\ApiClient\JasonHelper.cs" />
      <Compile Include="Assets\Scripts\ApiClient\Models\Item.cs" />
      <Compile Include="Assets\Scripts\ApiClient\Models\TipoItem.cs" />
+     <Compile Include="Assets\Scripts\UI\InvHandler.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

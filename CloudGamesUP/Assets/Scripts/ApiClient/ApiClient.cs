@@ -6,12 +6,21 @@ public class ApiClient : MonoBehaviour {
 
     public string baseUrl = "http://localhost:57038/API";
 
+    [HideInInspector]
+    public Item[] itens;
+
     // Use this for initialization
     void Start ()
     {
-        StartCoroutine(GetItensApiAsync());
+        //StartCoroutine(GetItensApiAsync());
 	}
 	
+
+    public void GetItensApiAsync2()
+    {
+
+    }
+
 	IEnumerator GetItensApiAsync()
     {
         UnityWebRequest request = UnityWebRequest.Get(baseUrl + "/Itens");
@@ -28,12 +37,12 @@ public class ApiClient : MonoBehaviour {
 
             byte[] bytes = request.downloadHandler.data;
 
-            Item[] itens = JasonHelper.getJsonArray<Item>(response);
+            itens = JasonHelper.getJsonArray<Item>(response);
 
-            foreach (Item i in itens)
+            /*foreach (Item i in itens)
             {
                 ImprimirItem(i);
-            }
+            }*/
         }
     }
 
