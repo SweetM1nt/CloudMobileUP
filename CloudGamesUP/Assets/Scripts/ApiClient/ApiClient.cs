@@ -10,15 +10,40 @@ public class ApiClient : MonoBehaviour {
     public Item[] itens;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
-        //StartCoroutine(GetItensApiAsync());
+        StartCoroutine(PostItemApiAsync());
+        StartCoroutine(GetItensApiAsync());
 	}
 	
 
     public void GetItensApiAsync2()
     {
 
+    }
+
+    IEnumerator PostItemApiAsync()
+    {
+        WWWForm form = new WWWForm();
+
+        form.AddField("Nome", "ItemFromUnity");
+        form.AddField("Descricao", "Item enviado por post para unity");
+        form.AddField("DanoMaximo", "5");
+        form.AddField("Raridade", "0");
+        form.AddField("TipoItemID", "2");
+
+        using(UnityWebRequest request = UnityWebRequest.Post(baseUrl + "/Itens/Create", form))
+        {
+            yield return request.Send();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+            } else
+            {
+                Debug.Log("Envio do item efetuado com sucesso");
+            }
+        }
     }
 
 	IEnumerator GetItensApiAsync()

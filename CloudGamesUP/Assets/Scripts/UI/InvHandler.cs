@@ -15,9 +15,16 @@ public class InvHandler : MonoBehaviour
 
     void Update()
     {
+        // Update inventory
         if (Input.GetKeyDown(KeyCode.D))
         {
             AttInv();
+        }
+
+        // test
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Lenght of the array: " + Server.itens.Length);
         }
     }
 
@@ -30,7 +37,7 @@ public class InvHandler : MonoBehaviour
             // Add content
             slotsGO[i].GetComponentInChildren<RawImage>().texture = textures[slotsContent[i] - 1];
             // Add description and name:
-            slotsGO[i].GetComponentInChildren<Text>().text = Server.itens[i].Descricao;
+            slotsGO[i].GetComponentInChildren<Text>().text = Server.itens[slotsContent[i] - 1].Descricao;
         }
     }
 
